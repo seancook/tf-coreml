@@ -1,4 +1,3 @@
-import os
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data # Import MINST data
 
@@ -64,11 +63,7 @@ def train():
       if (epoch+1) % display_step == 0:
         print "Epoch:", '%04d' % (epoch+1), "cost=", "{:.9f}".format(avg_cost)
     print 'Training Done. Now save the checkpoint...'
-    save_dir = './checkpoints'
-    save_path = os.path.join(save_dir, 'model.ckpt')
-    if not os.path.exists(save_dir):
-      os.mkdir(save_dir)
-    save_path = saver.save(sess, save_path)
+    save_path = saver.save(sess, "./checkpoints/model.ckpt")
     tf.train.write_graph(sess.graph, './', 'model.pbtxt')
 
 
